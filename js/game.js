@@ -52,10 +52,6 @@ Game.prototype.multiRun = function(maxGames)
         pot = this.run();
         out(pot, true);
     }
-
-    out(`***************`, true);
-    out(`w: ${this.winCount}`, true);
-    out(`q: ${this.quitCount}`, true);
 };
 
 Game.prototype.run = function()
