@@ -78,6 +78,7 @@ Game.prototype.run = function(maxRounds)
         out(`b: ${bet}`);
         out(`s: ${slot}`);
         out(`r: ${result ? 'win' : 'lose'}`);
+        out(`c: ${this.bet.counter}`);
         out(`p: ${pot} <<<`);
         out(`ro: ${this.round}`);
         out(`***************`);
