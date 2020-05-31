@@ -14,9 +14,7 @@ ReverseMartingale.prototype.next = function(pot, isWin)
         this.counter++;
 
         if (this.hedge === 0 || this.counter < this.hedge)
-            return this.currentBet = parseFloat(
-                ( this.currentBet * 2 + this.baseBet ).toFixed(2)
-            );
+            return this.computeNextBet();
     }
 
     this.counter = 0;
