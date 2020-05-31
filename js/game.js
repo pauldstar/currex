@@ -43,18 +43,18 @@ Game.prototype.gameWon = function(pot)
     return true;
 };
 
-Game.prototype.multiRun = function(maxGames)
+Game.prototype.multiRun = function(maxGames, maxRounds)
 {
     let pot;
 
     for (let c = 1; c <= maxGames; c++)
     {
-        pot = this.run();
+        pot = this.run(maxRounds);
         out(pot, true);
     }
 };
 
-Game.prototype.run = function()
+Game.prototype.run = function(maxRounds)
 {
     let pot = this.startPot,
         bet = this.bet.next(pot),
@@ -62,7 +62,7 @@ Game.prototype.run = function()
         randomSlot,
         result;
 
-    while (true)
+    while (! maxRounds || this.round <= maxRounds)
     {
         if (this.gameOver(pot) || this.gameWon(pot)) break;
 
