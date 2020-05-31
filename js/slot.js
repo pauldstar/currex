@@ -1,11 +1,12 @@
 'use strict';
 
-function Slot(initialSlot, pattern)
+function Slot(initialSlot, pattern, switchOnLoss = false)
 {
     this.pattern = pattern;
     this.currentPattern = 0;
     this.baseSlot = initialSlot;
     this.currentSlot = initialSlot;
+    this.switchOnLoss = switchOnLoss;
 }
 
 Slot.prototype.switch = function(selection)
@@ -31,6 +32,20 @@ Slot.prototype.next = function(isWin = false)
     this.currentPattern = (this.currentPattern + 1) % this.pattern.length;
 
     return this.currentSlot;
+};
+
+Slot.prototype.restartPattern = function(isWin)
+{
+    return this.switchOnLoss ? !isWin : isWin;
+};
+
+Slot.prototype.switch = function(selection)
+{
+    switch(selection)
+    {
+        case 'red': return 'black';
+        case 'black': return 'red';
+    }
 };
 
 Slot.prototype.random = function(wheelSize)
