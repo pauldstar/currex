@@ -2,25 +2,16 @@
 
 function Slot(initialSlot, pattern, switchOnLoss = false)
 {
-    this.pattern = pattern;
+    this.pattern = pattern.split();
     this.currentPattern = 0;
     this.baseSlot = initialSlot;
     this.currentSlot = initialSlot;
     this.switchOnLoss = switchOnLoss;
 }
 
-Slot.prototype.switch = function(selection)
-{
-    switch(selection)
-    {
-        case 'red': return 'black';
-        case 'black': return 'red';
-    }
-};
-
 Slot.prototype.next = function(isWin = false)
 {
-    if (isWin)
+    if (this.restartPattern(isWin))
     {
         this.currentPattern = 1;
         this.baseSlot = this.currentSlot = this.switch(this.currentSlot);

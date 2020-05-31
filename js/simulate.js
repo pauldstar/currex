@@ -1,14 +1,24 @@
-let bet = new Martingale(10000000, 22),
-    slot = new Slot('red', [1,1,0,0]),
-    game = new Game(100000, 200000, bet, slot);
+let
+  startPot = 1,
+  target = 10,
+  factor = 100,
+  hedge = 7,
+  aggressive = false,
+  startSlot = 'red',
+  pattern = '11111111',
+  switchOnLoss = true;
 
-multiMode = 0;
+let bet = new Martingale(factor, hedge, aggressive),
+    slot = new Slot(startSlot, pattern, switchOnLoss),
+    game = new Game(startPot, target, bet, slot);
+
+multiMode = 1;
 
 out(`p: ${game.startPot}`, true);
 out(`***************`, true);
 
 if (multiMode) game.multiRun(100);
-else game.run();
+else game.run(1000);
 
 out(`***************`, true);
 out(`w: ${game.winCount}`, true);
