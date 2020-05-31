@@ -1,11 +1,11 @@
 'use strict';
 
-function ReverseMartingale(factor, hedge)
+function ReverseMartingale(factor, hedge, aggressive)
 {
-    Bet.call(this, factor, hedge);
+    Martingale.call(this, factor, hedge, aggressive);
 }
 
-ReverseMartingale.prototype = new Bet();
+ReverseMartingale.prototype = new Martingale();
 
 ReverseMartingale.prototype.next = function(pot, isWin)
 {
